@@ -2,9 +2,9 @@
   "produtos": [
     {
       "id": "3",
-      "nome": "Teclado",
-      "preco": 210,
-      "estoque": 8
+      "nome": "headset",
+      "preco": 500,
+      "estoque": 5
     },
     {
       "id": "4",
