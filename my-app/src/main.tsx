@@ -8,6 +8,7 @@ import Home from './routes/Home/index.tsx'
 import Produtos from './routes/Prodoutos/index.tsx'
 import EditarProdutos from './routes/EditarProduto/index.tsx'
 import CadProduto from './routes/CadProduto/index.tsx'
+import './global.css'
 
 
 const router = createBrowserRouter([
