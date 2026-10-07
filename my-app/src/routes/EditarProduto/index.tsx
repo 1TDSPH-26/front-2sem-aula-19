@@ -2,50 +2,84 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import type { TipoProduto } from "../../Types/types";
 
-export default function EditarProduto(){
-    document.title = "Editar Produto";
-    
-const navigate = useNavigate();
 
-    const{id} = useParams<{id:string}>();
+export default function EditarProduto() {
+  document.title = "Editar Produto";
 
-    const [produto, setProduto] = useState<TipoProduto>({} as { id: "", nome: "", preco: 0, estoque: 0 });
+  const navigate = useNavigate();
 
+  const { id } = useParams<{id:string}>();
 
+  const [produto, setProduto] = useState<TipoProduto>({ id:"", nome:"" , preco:0 , estoque:0 });
 
-    useEffect(() => {
-        const carregaProduto = async () => {
-            try {
-                const response = await fetch(`http://localhost:3001/produtos/${id}`);
+  useEffect( ()=> {
 
-                if (!response.ok) {
+    const carregaProduto = async () => {
 
-                } throw new Error(`Erro na recuperação do produto: ${response.status} - ${response.statusText}`);
+      try {
 
-                const data: TipoProduto = await response.json();
-            } catch(error) {
-                console.error(error);
-            }
+        const response = await fetch(`http://localhost:3001/produtos/${id}`);
+
+        if (!response.ok) {
+          throw new Error(`Erro na recuperação do produto: ${response.status} - ${response.statusText}`);
         }
 
-        carregaProduto();
+        const data: TipoProduto = await response.json();
+        setProduto(data);
 
-    }, []);
+      } catch (error) {
+        console.error(error);
+      }
+    }
 
-    return(
-        <main>
-            <h2>Editar Produtos</h2>
+    carregaProduto();
+
+  },[]);
+
+  const handleUpdate = async ()=>{
+    try {
+        const response = await fetch(`http://localhost:3001/produtos/${produto}`, {
+            method:"PUT",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body: JSON.stringify(produto)
+      });
+
+        if (!response.ok) {
+          throw new Error(`Erro na atualização do produto: ${response.status} - ${response.statusText}`);
+        }
+    } catch (error) {
+        console.error(error)
+    }
+  }
+
+  return (
+    <main>
+        <h2>Editar Produtos</h2>
+       <div>
+        <form>
+          <fieldset>
+            <legend>Dados do Produto</legend>
             <div>
-                <form>
-                    <fieldset>
-                        <legend>Dados do Produto</legend>
-                        <div>
-                            <label htmlFor="nome">Nome do Produto</label>
-                            <input type="text" name="nome" id="nome" value={produto.nome} onChange={(event)=> setProduto({...produto,nome:event.target.value})}/>
-                        </div>
-                    </fieldset>
-                </form>
+              <label htmlFor="nome">Nome do Produto:</label>
+          <input type="text" name="nome" id="nome" value={produto.nome} onChange={(event)=> setProduto({...produto,nome:event.target.value})}/>
             </div>
-        </main>
-    )
+            <div>
+              <label htmlFor="preco">Preço do Produto:</label>
+          <input type="number" step={0.1} name="preco" id="preco" value={produto.preco} onChange={(event)=> setProduto({...produto,preco: parseFloat(event.target.value)})}/>
+            </div>
+            <div>
+              <label htmlFor="estoque">Estoque do Produto:</label>
+          <input type="number" step={1} name="estoque" id="estoque" value={produto.estoque} onChange={(event)=> setProduto({...produto,estoque:parseInt(event.target.value)})}/>
+            </div>
+            <div>
+              <button type="button" onClick={() => handleUpdate()}>EDITAR</button>
+            </div>
+          </fieldset>
+        </form>
+       </div>
+
+    </main>
+  )
 }
