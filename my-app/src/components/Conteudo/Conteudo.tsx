@@ -15,7 +15,7 @@ export default function Conteudo() {
 
   function alteraState() {
     const nome: string | null = prompt("digite seu nome:")
-    setNomeState((nomeStateAnterior) => nomeStateAnterior = nome);
+    setNomeState(nome);
     console.log("Nome digitado: ", nomeState);
   }
 

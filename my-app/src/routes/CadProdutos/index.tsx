@@ -1,46 +1,18 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useState } from "react";
+import { useNavigate } from "react-router";
 import type { TipoProduto } from "../../types/types";
 
-
-export default function EditarProduto() {
-  document.title = "Editar Produto";
-
+export default function CadProduto() {
+  document.title = "Cadastrar Produto";
   const navigate = useNavigate();
-
-  const { id } = useParams<{id:string}>();
 
   const [produto, setProduto] = useState<TipoProduto>({ id:"", nome:"" , preco:0 , estoque:0 });
 
-  useEffect( ()=> {
-
-    const carregaProduto = async () => {
-
-      try {
-
-        const response = await fetch(`http://localhost:3001/produtos/${id}`);
-
-        if (!response.ok) {
-          throw new Error(`Erro na recuperação do produto: ${response.status} - ${response.statusText}`);
-        }
-
-        const data: TipoProduto = await response.json();
-        setProduto(data);
-
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    carregaProduto();
-
-  },[]);
-
-  const handleUpdate = async ()=>{
+  const handleSubmit = async ()=>{
     try {
 
-      const response = await fetch(`http://localhost:3001/produtos/${produto.id}`,{
-        method:"PUT",
+      const response = await fetch(`http://localhost:3001/produtos/`,{
+        method:"POST",
         headers:{
           "Content-Type":"application/json"
         },
@@ -49,11 +21,11 @@ export default function EditarProduto() {
       
       //ERRO
         if (!response.ok) {
-          throw new Error(`Erro na atualização do produto: ${response.status} - ${response.statusText}`);
+          throw new Error(`Erro no cadastro do produto: ${response.status} - ${response.statusText}`);
         }
 
         //SUCCESS
-        alert("Produto alterado com sucesso!");
+        alert("Produto cadastrado com sucesso!");
         //REDIRECT
         navigate("/produtos");
 
@@ -64,7 +36,7 @@ export default function EditarProduto() {
 
   return (
     <main>
-        <h2>Editar Produtos</h2>
+      <h2>Cadastro de Produto</h2>
        <div>
         <form>
           <fieldset>
@@ -82,12 +54,11 @@ export default function EditarProduto() {
           <input type="number" step={1} name="estoque" id="estoque" value={produto.estoque} onChange={(event)=> setProduto({...produto,estoque:parseInt(event.target.value)})}/>
             </div>
             <div>
-              <button type="button" onClick={()=> handleUpdate()}>EDITAR</button>
+              <button type="button" onClick={()=> handleSubmit()}>EDITAR</button>
             </div>
           </fieldset>
         </form>
        </div>
-
     </main>
-  )
+  );
 }
