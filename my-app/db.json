@@ -8,15 +8,21 @@
     },
     {
       "id": "2",
-      "nome": "Mouse",
-      "preco": 120,
-      "estoque": 25
+      "nome": "Rato",
+      "preco": 250,
+      "estoque": 20
     },
     {
       "id": "3",
       "nome": "Teclado",
       "preco": 200,
       "estoque": 25
+    },
+    {
+      "id": "h98CHd2qz7c",
+      "nome": "roteador",
+      "preco": 200,
+      "estoque": 50
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

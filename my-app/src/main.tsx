@@ -8,6 +8,7 @@ import Home from './routes/Home'
 import Produtos from './routes/Produtos'
 import Error from './routes/Error'
 import EditarProduto from './routes/EditarProduto/index.tsx'
+import CadProduto from './routes/CadProduto/index.tsx'
 
 
 
@@ -19,7 +20,8 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> },
       { path: '/produtos', element: <Produtos /> },
-      { path: '/editar-produtos/:id', element: <EditarProduto /> }
+      { path: '/editar-produtos/:id', element: <EditarProduto /> },
+      {path:'/cadastrar-produto/', element:<CadProduto/>}
     ]
   }
 ])
