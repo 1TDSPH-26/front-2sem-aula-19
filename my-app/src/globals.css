@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+.container{
+    @apply bg-gray-400 max-w-full h-screen flex flex-col justify-between;
+
+    & header{
+        @apply bg-amber-100 p-1 flex justify-around;
+
+        & nav ul li{
+            @apply inline mx-3;
+
+            & a{
+                @apply underline
+            }
+        }
+
+    }
+
+    & main{
+        @apply bg-blue-200 p-1;
+    }
+    & footer{
+        @apply bg-green-200 p-1;
+    }
+}
