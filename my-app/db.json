@@ -11,6 +11,12 @@
       "nome": "Teclado",
       "preco": 210,
       "estoque": 8
+    },
+    {
+      "id": "DGIypRnOTG0",
+      "nome": "Filtro de Linha",
+      "preco": 150,
+      "estoque": 10
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
