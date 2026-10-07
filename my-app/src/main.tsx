@@ -7,6 +7,7 @@ import Error from './routes/Error/index.tsx'
 import Home from './routes/Home/index.tsx'
 import Produtos from './routes/Prodoutos/index.tsx'
 import EditarProdutos from './routes/EditarProduto/index.tsx'
+import CadProduto from './routes/CadProduto/index.tsx'
 
 
 const router = createBrowserRouter([
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
     {path:"/", element:<Home/>},
     {path:"/produtos", element:<Produtos/>},
     {path:"/editar-produto/:id", element:<EditarProdutos/>},
+    {path:"/cadastrar-produtos", element:<CadProduto/>}
   ]},
 ])
 

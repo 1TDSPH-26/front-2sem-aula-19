@@ -2,9 +2,9 @@
   "produtos": [
     {
       "id": "1",
-      "nome": "Notebook",
-      "preco": 3500,
-      "estoque": 10
+      "nome": "Controle de PS5",
+      "preco": 550,
+      "estoque": 13
     },
     {
       "id": "2",
