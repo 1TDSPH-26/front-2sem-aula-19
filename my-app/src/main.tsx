@@ -10,6 +10,7 @@ import Error from './routes/Error'
 import EditarProduto from './routes/EditarProduto/index.tsx'
 import CadProduto from './routes/CadProduto/index.tsx'
 
+import "./globals.css"
 
 
 const router = createBrowserRouter([
