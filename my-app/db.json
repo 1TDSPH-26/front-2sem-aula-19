@@ -11,6 +11,12 @@
       "nome": "Teclado",
       "preco": 210,
       "estoque": 8
+    },
+    {
+      "id": "S676VPnVTGI",
+      "nome": "Fone de ouvido",
+      "preco": 120,
+      "estoque": 15
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
