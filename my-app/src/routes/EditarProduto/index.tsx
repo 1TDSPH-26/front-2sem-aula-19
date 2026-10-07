@@ -40,6 +40,28 @@ export default function EditarProduto() {
 
   },[]);
 
+  const handleUpdate = async ()=>{
+    try {
+      const response = await fetch(`https://localhost:3001/produtos/${id}`,{
+        method: "PUT",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body: JSON.stringify(produto)
+      });
+
+      if (!response.ok) {
+        throw new Error(`Erro na atualização do produto: ${response.status}" - ${response.statusText}`);
+      }
+
+      alert("Produto alterado");
+      navigate("/produtos")
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <main>
         <h2>Editar Produtos</h2>
@@ -65,7 +87,11 @@ export default function EditarProduto() {
               })} />
               <p>{produto.estoque}</p>
             </div>
+            <div>
+              <button type="button" onClick={()=>handleUpdate()}>Editar produto</button>
+            </div>
             </fieldset>
+              
           </form>
         </div>
 

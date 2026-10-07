@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.container{
+    @apply bg-gray-400 max-w-full max-h-full flex flex-col justify-between
+}
