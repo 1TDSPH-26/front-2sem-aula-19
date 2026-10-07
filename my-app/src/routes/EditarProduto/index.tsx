@@ -12,15 +12,12 @@ export default function EditarProduto() {
 
   const [produto, setProduto] = useState<TipoProduto>({ id:"", nome:"" , preco:0 , estoque:0 });
 
-
-
   useEffect( ()=> {
 
     const carregaProduto = async () => {
 
       try {
 
-        // const response = await fetch("http://localhost:3001/produtos/"+id);
         const response = await fetch(`http://localhost:3001/produtos/${id}`);
 
         if (!response.ok) {
@@ -53,7 +50,18 @@ export default function EditarProduto() {
             <legend>Dados do Produto</legend>
             <div>
               <label htmlFor="nome">Nome do Produto:</label>
-              <input type="text" name="nome" id="nome" value={produto.nome} onChange={(event)=> setProduto({...produto,nome:event.target.value})}/>
+          <input type="text" name="nome" id="nome" value={produto.nome} onChange={(event)=> setProduto({...produto,nome:event.target.value})}/>
+            </div>
+            <div>
+              <label htmlFor="preco">Preço do Produto:</label>
+          <input type="number" step={0.1} name="preco" id="preco" value={produto.preco} onChange={(event)=> setProduto({...produto,preco: parseFloat(event.target.value)})}/>
+            </div>
+            <div>
+              <label htmlFor="estoque">Estoque do Produto:</label>
+          <input type="number" step={1} name="estoque" id="estoque" value={produto.estoque} onChange={(event)=> setProduto({...produto,estoque:parseInt(event.target.value)})}/>
+            </div>
+            <div>
+              <button type="button">EDITAR</button>
             </div>
           </fieldset>
         </form>
