@@ -50,6 +50,17 @@ export default function EditarProdutos() {
                             <label htmlFor="nome">Nome do produto</label>
                             <input type="text" name="nome" id="nome" value={produto.nome} onChange={(e) => setProduto({...produto,nome: e.target.value})}/>
                         </div>
+                        <div>
+                            <label htmlFor="preco">Preço do produto</label>
+                            <input type="number" name="preco" id="preco" value={produto.preco} onChange={(e) => setProduto({...produto,preco: parseFloat(e.target.value)})}/>
+                        </div>
+                        <div>
+                            <label htmlFor="estoque">Estoque do produto</label>
+                            <input type="number" name="estoque" id="estoque" value={produto.estoque} onChange={(e) => setProduto({...produto,estoque: parseInt(e.target.value)})}/>
+                        </div>
+                        <div>
+                            <button type="submit">Salvar Alterações</button>
+                        </div>
                     </fieldset>
                 </form>
             </div>
