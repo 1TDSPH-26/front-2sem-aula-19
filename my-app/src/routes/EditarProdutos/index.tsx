@@ -42,7 +42,17 @@ export default function EditarProdutos() {
             <div>
               <label htmlFor="nome">Nome do Produto:</label>
               <input type="text" name="nome" id="nome" value={produto.nome} onChange={(event)=> setProduto({...produto,nome:event.target.value})}/>
+            </div>  
+            <div>
+              <label htmlFor="preco">Preço do Produto</label>
+              <input type="number" step={0.1} name="preco" id="preco" value={produto.preco} onChange={(event)=> setProduto({...produto,preco: parseFloat(event.target.value)})}/>
             </div>
+            <div>
+              <label htmlFor="estoque">Estoque do Produto</label>
+              <input type="number" step={1} name="estoque" id="estoque" value={produto.estoque} onChange={(event)=> setProduto({...produto,estoque: parseInt(event.target.value)})}/>
+            </div>
+              
+            
           </fieldset>
         </form>
       </div>
