@@ -38,11 +38,11 @@ export default function Home() {
 
   useEffect(() => {
 
-    async function loadingData() {
-      try {
-        const response = await fetch(" https://api.github.com/users");
-
-        if (!response.ok) {
+  async function loadingData() {
+    try{
+      const response = await fetch("https://api.github.com/users");
+      
+      if(!response.ok){
           throw new Error("A listagem dos usuários falhou!");
         }
 
@@ -55,7 +55,7 @@ export default function Home() {
       }
     }
 
-    loadingData();
+  //loadingData();
 
   }, []);
 
@@ -71,9 +71,10 @@ export default function Home() {
       </div>
       <div>
         <ul>
-          {usuarios.map((u, indice) => (
-            <li key={indice}>{u.id} - {u.login} -
-              <a href={u.html_url} target="_blank"><img src={u.avatar_url} alt={u.login} width={40} /></a>
+          {usuarios.map( (u,indice)=>(
+            //<link rel="" href={u.html_url} />
+            <li key={indice}>{u.id} - {u.login} - 
+              <a href={u.html_url}><img src={u.avatar_url} alt={u.login} /></a>
             </li>
           ))}
         </ul>
