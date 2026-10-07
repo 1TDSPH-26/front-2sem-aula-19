@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import type { TipoProduto } from "../../types/types";
 
 
 export default function EditarProduto() {
   document.title = "Editar Produto";
-
-  const navigate = useNavigate();
 
   const { id } = useParams<{id:string}>();
 
@@ -54,6 +52,14 @@ export default function EditarProduto() {
             <div>
               <label htmlFor="nome">Nome do Produto:</label>
               <input type="text" name="nome" id="nome" value={produto.nome} onChange={(event)=> setProduto({...produto,nome:event.target.value})}/>
+            </div>
+            <div>
+              <label htmlFor="preco">Preço do Produto:</label>
+              <input type="number" name="preco" id="preco" step="0.01" value={produto.preco} onChange={(event)=> setProduto({...produto,preco:parseFloat(event.target.value) || 0})}/>
+            </div>
+            <div>
+              <label htmlFor="estoque">Estoque do Produto:</label>
+              <input type="number" name="estoque" id="estoque" value={produto.estoque} onChange={(event)=> setProduto({...produto,estoque:parseInt(event.target.value, 10) || 0})}/>
             </div>
           </fieldset>
         </form>
