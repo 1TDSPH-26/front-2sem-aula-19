@@ -7,16 +7,10 @@
       "estoque": 25
     },
     {
-      "id": "3", 
+      "id": "3",
       "nome": "Teclado",
       "preco": 210,
       "estoque": 8
-    },
-    {
-      "id": "4",
-      "nome": "Cadeira gamer",
-      "preco": "1568",
-      "estoque": 3
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
