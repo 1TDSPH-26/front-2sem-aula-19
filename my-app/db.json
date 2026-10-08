@@ -1,12 +1,6 @@
 {
   "produtos": [
     {
-      "id": "1",
-      "nome": "Notebook",
-      "preco": 3500,
-      "estoque": 10
-    },
-    {
       "id": "2",
       "nome": "Mouse",
       "preco": 120,
@@ -19,10 +13,10 @@
       "estoque": 8
     },
     {
-      "id": "4",
-      "nome": "Cadeira Gamer",
-      "preco": 1568,
-      "estoque": 3
+      "id": "DGIypRnOTG0",
+      "nome": "Filtro de Linha",
+      "preco": 150,
+      "estoque": 10
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
